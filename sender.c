@@ -1,4 +1,3 @@
-
 #include "sender.h"
 
 bmsData_t batteryParam[BUFFER_SIZE] = {0};
@@ -37,10 +36,10 @@ Status_t passToConsole(bmsData_t batteryParam)
 
 Status_t fetchData(dataFetchChannel inputMethod)
 {
-    return (*BMSDataRead[inputMethod])(batteryParam);
+    return (*readBMSData[inputMethod])(batteryParam);
 }
 
 Status_t passDataToOutput(dataOutputChannel outputMethod)
 {
-    return (*BMSoutput[outputMethod])(batteryParam);
+    return (*passBMSData[outputMethod])(batteryParam);
 }

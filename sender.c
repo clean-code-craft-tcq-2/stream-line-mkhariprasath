@@ -45,7 +45,6 @@ float optimumValuesRandom(float min, float max)
 
 Status_t passToConsole(float Temperature[],float StateOfCharge[])
 {
-    printf("passToConsole called");
     for(int i = 0; i<BUFFER_SIZE; i++)
     {
         printf("%f \t\t %f\n",Temperature[i], StateOfCharge[i]);
@@ -55,7 +54,6 @@ Status_t passToConsole(float Temperature[],float StateOfCharge[])
 
 Status_t testOutput(float Temperature[],float StateOfCharge[])
 {
-        printf("testOutput called");
     return E_TEST_OK;
 }
 
@@ -79,7 +77,7 @@ Status_t senderMain(dataFetchChannel inputMethod, dataOutputChannel outputMethod
     Status_t status = E_OK;
     while (status == E_OK)
     {
-        Status_t status = fetchData (inputMethod);
+        status = fetchData (inputMethod);
         if (status == E_OK)
         {
             status = passDataToOutput (outputMethod);

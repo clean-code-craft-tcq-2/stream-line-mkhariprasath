@@ -62,7 +62,7 @@ float optimumValuesRandom(float min, float max)
 Status_t fetchData(Status_t (*fp_InputFunction)())
 {
     Status_t Status = E_NOT_OK;
-    Status = (*readBMSData[inputMethod])(Temperature,StateOfCharge);
+    Status = fp_InputFunction();
     return Status;
 
 }
@@ -70,7 +70,7 @@ Status_t fetchData(Status_t (*fp_InputFunction)())
 Status_t passDataToOutput(Status_t (*fp_OutputFunction)())
 {
     Status_t Status = E_NOT_OK;
-    Status = (*passBMSData[outputMethod])(Temperature,StateOfCharge);
+    Status = fp_OutputFunction();
     return Status;
 }
 

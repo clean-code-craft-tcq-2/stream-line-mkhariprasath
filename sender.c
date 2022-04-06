@@ -45,8 +45,6 @@ float optimumValuesRandom(float min, float max)
 
 Status_t passToConsole(float Temperature[],float StateOfCharge[])
 {
-    printf("Temperature \t SOC\n ");
-    printf("-----------------------");
     for(int i = 0; i<BUFFER_SIZE; i++)
     {
         printf("%f \t\t %f\n",Temperature[i], StateOfCharge[i]);

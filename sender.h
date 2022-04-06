@@ -15,46 +15,25 @@
 #define OPTIMUM_CHARGESTATE 70
 #define MAXIMUM_CHARGESTATE 80
 
-#define MINIMUM_CHARGERATE  0
-#define OPTIMUM_CHARGERATE  0.7f
-#define MAXIMUM_CHARGERATE  0.8f
-
-typedef enum{
-    viaFile,
-    viaRandomNumberGenerator, // for testing and extensibility purpose
-    TestWithNoInput,
-    // ...
-    // ...
-    noOfFetchChannelMethod
-}dataFetchChannel;
-
-typedef enum{
-    viaConsole,
-    OutputChannelTest,
-    // ...
-    // ...
-    noOfOutputChannelMethods
-}dataOutputChannel;
-
 typedef enum
 {
 	E_NOT_OK,
 	E_OK,
-    E_TEST_OK
+    	E_TEST_OK
 }Status_t;
 
-Status_t readDataFromFile(float Temperature[],float StateOfCharge[]);
-Status_t testInput(float Temperature[],float StateOfCharge[]);
-Status_t fillRandomData(float Temperature[],float StateOfCharge[]);
-Status_t readData(float Temperature[],float StateOfCharge[]);
-Status_t passToConsole(float Temperature[],float StateOfCharge[]);
-Status_t testOutput(float Temperature[],float StateOfCharge[]);
-Status_t fetchData(dataFetchChannel inputvaluefetch);
-Status_t passDataToOutput(dataOutputChannel outputvaluefetch);
-float optimumValuesRandom(float min, float max);
+Status_t readDataFromFile();
+Status_t testWithNoInputFile();
+Status_t fillRandomData();
+Status_t passToConsole();
+Status_t testOutput();
+float    optimumValuesRandom(float min, float max);
+
+Status_t fetchData(float (*)(float,float));
+Status_t passDataToOutput(float (*)(float,float));
 
 // Main function to do send operation
-Status_t senderMain(dataFetchChannel inputMethod, dataOutputChannel outputMethod);
+Status_t senderMain(float (*)(float,float), float (*)(float,float)); // input function pointer , output function pointer
 
 
 #endif // multiple include protection for SENDER_H

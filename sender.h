@@ -46,6 +46,7 @@ Status_t readDataFromFile(float Temperature[],float StateOfCharge[]);
 Status_t fillRandomData(float Temperature[],float StateOfCharge[]);
 Status_t readData(float Temperature[],float StateOfCharge[]);
 Status_t passToConsole(float Temperature[],float StateOfCharge[]);
+Status_t testOutput(float Temperature[],float StateOfCharge[]);
 Status_t fetchData(dataFetchChannel inputvaluefetch);
 Status_t passDataToOutput(dataOutputChannel outputvaluefetch);
 float optimumValuesRandom(float min, float max);

@@ -8,6 +8,11 @@ TEST_CASE("Get the data temperature and soc data from file") {
     REQUIRE(fetchData (inputMethod) == E_OK);
 }
 
+TEST_CASE("Get the data temperature and soc data from random number generator") {
+    dataFetchChannel inputMethod = viaRandomNumberGenerator;
+    REQUIRE(fetchData (inputMethod) == E_OK);
+}
+
 TEST_CASE("Check the data is printed on console") {
     dataFetchChannel inputMethod = viaFile;
     dataOutputChannel outputMethod = viaConsole;

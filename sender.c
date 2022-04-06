@@ -79,8 +79,6 @@ Status_t senderMain(dataFetchChannel inputMethod, dataOutputChannel outputMethod
     if (status == E_OK)
     {
         status = passDataToOutput (outputMethod);
-        if ( (status == E_NOT_OK) || (status == E_TEST_OK) )
-            break;
     }
     return status;
 }

@@ -38,7 +38,7 @@ Status_t passToConsole(float Temperature[],float StateOfCharge[])
 Status_t fetchData(dataFetchChannel inputMethod)
 {
     Status_t Status = E_NOT_OK;
-    Status=(*readBMSData[inputMethod])(Temperature,StateOfCharge);
+    Status = (*readBMSData[inputMethod])(Temperature,StateOfCharge);
     return Status;
 
 }
@@ -46,7 +46,7 @@ Status_t fetchData(dataFetchChannel inputMethod)
 Status_t passDataToOutput(dataOutputChannel outputMethod)
 {
     Status_t Status = E_NOT_OK;
-    Status_t Status =(*passBMSData[outputMethod])(Temperature,StateOfCharge);
+    Status = (*passBMSData[outputMethod])(Temperature,StateOfCharge);
     return Status;
 
 }

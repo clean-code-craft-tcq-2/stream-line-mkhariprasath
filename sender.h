@@ -27,17 +27,11 @@ typedef enum
 	E_OK
 }Status_t;
 
-typedef struct BMSData
-{
-    float batteryTemperature;
-    float stateOfCharge;
-}bmsData_t;
-
-
-
-Status_t readData(bmsData_t batteryParam);
-Status_t passToConsole(bmsData_t batteryParam);
+Status_t readDataFromFile(float Temperature[],float StateOfCharge[]);
+Status_t readData(float Temperature[],float StateOfCharge[]);
+Status_t passToConsole(float Temperature[],float StateOfCharge[]);
 Status_t fetchData(dataFetchChannel inputvaluefetch);
 Status_t passDataToOutput(dataOutputChannel outputvaluefetch);
+
 
 #endif // multiple include protection for SENDER_H

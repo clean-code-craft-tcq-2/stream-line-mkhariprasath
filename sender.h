@@ -23,6 +23,7 @@ typedef enum
 }Status_t;
 
 Status_t readDataFromFile();
+Status_t fillRandomData();
 Status_t passToConsole();
 float    optimumValuesRandom(float min, float max);
 

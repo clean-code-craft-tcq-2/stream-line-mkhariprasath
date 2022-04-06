@@ -17,7 +17,7 @@ TEST_CASE("Check the data is printed on console") {
     Status_t (*fp_InputFunction)() = readDataFromFile;
     Status_t (*fp_OutputFunction)() = passToConsole;
     REQUIRE(fetchData (fp_InputFunction) == E_OK);
-    REQUIRE(fetchData (fp_OutputFunction) == E_OK);
+    REQUIRE(passDataToOutput (fp_OutputFunction) == E_OK);
 }
 
 TEST_CASE("Test the main fuction of the sender without input file") {

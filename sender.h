@@ -22,6 +22,7 @@
 typedef enum{
     viaFile,
     viaRandomNumberGenerator, // for testing and extensibility purpose
+    TestWithNoInput,
     // ...
     // ...
     noOfFetchChannelMethod
@@ -43,6 +44,7 @@ typedef enum
 }Status_t;
 
 Status_t readDataFromFile(float Temperature[],float StateOfCharge[]);
+Status_t testInput(float Temperature[],float StateOfCharge[]);
 Status_t fillRandomData(float Temperature[],float StateOfCharge[]);
 Status_t readData(float Temperature[],float StateOfCharge[]);
 Status_t passToConsole(float Temperature[],float StateOfCharge[]);

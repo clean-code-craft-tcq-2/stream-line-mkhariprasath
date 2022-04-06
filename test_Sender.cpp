@@ -11,6 +11,6 @@ TEST_CASE("Get the data temperature and soc data from file") {
 TEST_CASE("Check the data is printed on console") {
     dataFetchChannel inputMethod = viaFile;
     dataOutputChannel outputMethod = viaConsole;
-    REQUIRE(fetchData (inputvaluefetch) == E_OK);
-    REQUIRE(passDataToOutput (outputvaluefetch) == E_OK);
+    REQUIRE(fetchData (inputMethod) == E_OK);
+    REQUIRE(passDataToOutput (outputMethod) == E_OK);
 }

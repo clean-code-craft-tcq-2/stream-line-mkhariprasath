@@ -3,19 +3,11 @@
 float Temperature  [BUFFER_SIZE] = {};
 float StateOfCharge[BUFFER_SIZE] = {};
 
-char fileName[25] = "./InputData.txt";
-
-FILE* openFile(char* l_fileName)
-{
-    FILE * fp= fopen(l_fileName,"r");
-    return fp;
-}
-
 Status_t readDataFromFile()
 {
     float temp, soc;
     Status_t Status= E_NOT_OK;
-    FILE * fp = openFile(fileName);
+    FILE * fp = fopen("./InputData.txt","r");
     if (fp) 
     {
         for(int i=0; fscanf(fp, "%f,%f\n", &temp, &soc)!=EOF; i++)
@@ -80,7 +72,7 @@ Status_t passDataToOutput(Status_t (*fp_OutputFunction)())
 
 Status_t senderMain(Status_t (*fp_InputFunction)(), Status_t (*fp_OutputFunction)())
 {
-    Status_t status = E_OK;
+    Status_t status = E_NOT_OK;
     status = fp_InputFunction();
     if (status == E_OK)
     {

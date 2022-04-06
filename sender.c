@@ -4,7 +4,7 @@ float Temperature  [BUFFER_SIZE] = {};
 float StateOfCharge[BUFFER_SIZE] = {};
 
 Status_t (*readBMSData[]) (float Temperature[],float StateOfCharge[])={readDataFromFile, fillRandomData}; // dataFetchChannel
-Status_t (*passBMSData[]) (float Temperature[],float StateOfCharge[])={passToConsole};    // dataOutputChannel
+Status_t (*passBMSData[]) (float Temperature[],float StateOfCharge[])={passToConsole, testOutput};    // dataOutputChannel
 
 Status_t readDataFromFile(float Temperature[],float StateOfCharge[])
 {
@@ -52,6 +52,11 @@ Status_t passToConsole(float Temperature[],float StateOfCharge[])
     return E_OK;
 }
 
+Status_t testOutput(float Temperature[],float StateOfCharge[])
+{
+    return E_TEST_OK;
+}
+
 Status_t fetchData(dataFetchChannel inputMethod)
 {
     Status_t Status = E_NOT_OK;
@@ -65,5 +70,20 @@ Status_t passDataToOutput(dataOutputChannel outputMethod)
     Status_t Status = E_NOT_OK;
     Status = (*passBMSData[outputMethod])(Temperature,StateOfCharge);
     return Status;
+}
 
+Status_t senderMain(dataFetchChannel inputMethod, dataOutputChannel outputMethod)
+{
+    Status_t status = E_OK;
+    while (status == E_OK)
+    {
+        Status_t status = fetchData (inputMethod);
+        if (status == E_OK)
+        {
+            status = passDataToOutput (outputMethod);
+            if ( (status == E_NOT_OK) || (status == E_TEST_OK) )
+                break;
+        }
+    }
+    return status;
 }

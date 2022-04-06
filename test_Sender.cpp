@@ -3,6 +3,7 @@
 #include "test/catch.hpp"
 #include "sender.h"
 #include "ut_Sender.h"
+#include <string.h>
 
 TEST_CASE("Get the data temperature and soc data from file") {
     Status_t (*fp_InputFunction)() = readDataFromFile;
@@ -10,7 +11,8 @@ TEST_CASE("Get the data temperature and soc data from file") {
 }
 
 TEST_CASE("Get the data temperature and soc data from file which doesn't exist") {
-    fileName = "./InputDummy.txt";
+    char fname = "./InputDummy.txt";
+    strcpy(fileName, fname);
     Status_t (*fp_InputFunction)() = readDataFromFile;
     REQUIRE(fetchData (fp_InputFunction) == E_OK);
 }

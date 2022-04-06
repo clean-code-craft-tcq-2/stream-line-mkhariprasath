@@ -11,7 +11,7 @@ TEST_CASE("Get the data temperature and soc data from file") {
 }
 
 TEST_CASE("Get the data temperature and soc data from file which doesn't exist") {
-    char fname = "./InputDummy.txt";
+    char fname[] = "./InputDummy.txt";
     strcpy(fileName, fname);
     Status_t (*fp_InputFunction)() = readDataFromFile;
     REQUIRE(fetchData (fp_InputFunction) == E_OK);

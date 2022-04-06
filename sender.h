@@ -5,7 +5,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-#define BUFFER_SIZE 100
+#define BUFFER_SIZE 50
 
 #define MINIMUM_TEMPERATURE 0
 #define OPTIMUM_TEMPERATURE 25
@@ -29,6 +29,7 @@ typedef enum{
 
 typedef enum{
     viaConsole,
+    OutputChannelTest,
     // ...
     // ...
     noOfOutputChannelMethods
@@ -37,7 +38,8 @@ typedef enum{
 typedef enum
 {
 	E_NOT_OK,
-	E_OK
+	E_OK,
+    E_TEST_OK
 }Status_t;
 
 Status_t readDataFromFile(float Temperature[],float StateOfCharge[]);
@@ -47,6 +49,9 @@ Status_t passToConsole(float Temperature[],float StateOfCharge[]);
 Status_t fetchData(dataFetchChannel inputvaluefetch);
 Status_t passDataToOutput(dataOutputChannel outputvaluefetch);
 float optimumValuesRandom(float min, float max);
+
+// Main function to do send operation
+Status_t senderMain(dataFetchChannel inputMethod, dataOutputChannel outputMethod);
 
 
 #endif // multiple include protection for SENDER_H

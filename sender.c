@@ -1,11 +1,12 @@
 #include "sender.h"
 
-bmsData_t batteryParam[BUFFER_SIZE] = {0};
+float Temperature  [BUFFER_SIZE] = {};
+float StateOfCharge[BUFFER_SIZE] = {};
 
-Status_t (*readBMSData[]) (bmsData_t batteryParam)={readDataFromFile}; // dataFetchChannel
-Status_t (*passBMSData[]) (bmsData_t batteryParam)={passToConsole};    // dataOutputChannel
+Status_t (*readBMSData[]) (float Temperature[],float StateOfCharge[])={readDataFromFile}; // dataFetchChannel
+Status_t (*passBMSData[]) (float Temperature[],float StateOfCharge[])={passToConsole};    // dataOutputChannel
 
-Status_t readDataFromFile(bmsData_t batteryParam)
+Status_t readDataFromFile(float Temperature[],float StateOfCharge[])
 {
     float temp, soc;
     Status_t Status= E_NOT_OK;
@@ -14,22 +15,22 @@ Status_t readDataFromFile(bmsData_t batteryParam)
     {
         for(int i=0; fscanf(fp, "%f,%f\n", &temp, &soc)!=EOF; i++)
         {
-            batteryParam[i].batteryTemperature = temp;
-            batteryParam[i].stateOfCharge = soc;
+            Temperature[i] = temp;
+            StateOfCharge[i] = soc;
         }
         Status= E_OK;
     }
-    fclose(file);
+    fclose(fp);
     return Status;
 }
 
-Status_t passToConsole(bmsData_t batteryParam)
+Status_t passToConsole(float Temperature[],float StateOfCharge[])
 {
     printf("Temperature \t SOC\n ");
     printf("-----------------------");
     for(int i = 0; i<BUFFER_SIZE; i++)
     {
-        printf("%f \t\t %f\n",batteryParam[i].batteryTemperature,batteryParam[i].stateOfCharge);
+        printf("%f \t\t %f\n",Temperature[i], StateOfCharge[i]);
     }
     return E_OK;
 }

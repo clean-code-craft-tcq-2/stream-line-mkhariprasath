@@ -3,7 +3,7 @@
 float Temperature  [BUFFER_SIZE] = {};
 float StateOfCharge[BUFFER_SIZE] = {};
 
-Status_t (*readBMSData[]) (float Temperature[],float StateOfCharge[])={readDataFromFile}; // dataFetchChannel
+Status_t (*readBMSData[]) (float Temperature[],float StateOfCharge[])={readDataFromFile, fillRandomData}; // dataFetchChannel
 Status_t (*passBMSData[]) (float Temperature[],float StateOfCharge[])={passToConsole};    // dataOutputChannel
 
 Status_t readDataFromFile(float Temperature[],float StateOfCharge[])
@@ -22,6 +22,25 @@ Status_t readDataFromFile(float Temperature[],float StateOfCharge[])
     }
     fclose(fp);
     return Status;
+}
+
+Status_t fillRandomData(float Temperature[],float StateOfCharge[])
+{
+    for (int i = 0; i < BUFFER_SIZE; i++)
+    {
+        Temperature[i] = optimumValuesRandom(MINIMUM_TEMPERATURE, MAXIMUM_TEMPERATURE);
+        StateOfCharge[i] = optimumValuesRandom(MINIMUM_CHARGESTATE, MAXIMUM_CHARGESTATE);
+    }
+}
+
+float optimumValuesRandom(float min, float max)
+{
+    float data = (rand() % (int)(max+1)) ;
+    if(data < min)
+    {
+        data = data + min;
+    }
+    return data;
 }
 
 Status_t passToConsole(float Temperature[],float StateOfCharge[])

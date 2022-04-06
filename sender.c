@@ -30,6 +30,7 @@ Status_t fillRandomData()
         Temperature[i] = optimumValuesRandom(MINIMUM_TEMPERATURE, MAXIMUM_TEMPERATURE);
         StateOfCharge[i] = optimumValuesRandom(MINIMUM_CHARGESTATE, MAXIMUM_CHARGESTATE);
     }
+    Status= E_OK;
     return Status;
 }
 

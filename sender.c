@@ -3,11 +3,19 @@
 float Temperature  [BUFFER_SIZE] = {};
 float StateOfCharge[BUFFER_SIZE] = {};
 
+char fileName[20] = "./InputData.txt";
+
+FILE* openFile(char* l_fileName)
+{
+    FILE * fp= fopen(l_fileName,"r");
+    return fp;
+}
+
 Status_t readDataFromFile()
 {
     float temp, soc;
     Status_t Status= E_NOT_OK;
-    FILE * fp= fopen("./InputData.txt","r");  
+    FILE * fp = openFile(fileName);
     if (fp) 
     {
         for(int i=0; fscanf(fp, "%f,%f\n", &temp, &soc)!=EOF; i++)
@@ -30,7 +38,6 @@ Status_t fillRandomData()
         Temperature[i] = optimumValuesRandom(MINIMUM_TEMPERATURE, MAXIMUM_TEMPERATURE);
         StateOfCharge[i] = optimumValuesRandom(MINIMUM_CHARGESTATE, MAXIMUM_CHARGESTATE);
     }
-    Status= E_OK;
     return Status;
 }
 

@@ -15,6 +15,8 @@
 #define OPTIMUM_CHARGESTATE 70
 #define MAXIMUM_CHARGESTATE 80
 
+extern char fileName[25];
+
 typedef enum
 {
 	E_NOT_OK,

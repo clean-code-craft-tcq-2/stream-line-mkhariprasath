@@ -3,8 +3,6 @@
 
 #include "sender.h"
 
-extern char fileName;
-
 Status_t testWithNoInputFile();
 Status_t testOutput();
 

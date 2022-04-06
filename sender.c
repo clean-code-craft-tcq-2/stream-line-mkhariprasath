@@ -54,6 +54,7 @@ Status_t passToConsole(float Temperature[],float StateOfCharge[])
 
 Status_t testOutput(float Temperature[],float StateOfCharge[])
 {
+    printf("testOutput Called");
     return E_TEST_OK;
 }
 

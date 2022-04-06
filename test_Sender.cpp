@@ -2,6 +2,7 @@
 
 #include "test/catch.hpp"
 #include "sender.h"
+#include "ut_Sender.h"
 
 TEST_CASE("Get the data temperature and soc data from file") {
     Status_t (*fp_InputFunction)() = readDataFromFile;

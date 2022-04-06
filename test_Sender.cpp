@@ -4,31 +4,32 @@
 #include "sender.h"
 
 TEST_CASE("Get the data temperature and soc data from file") {
-    dataFetchChannel inputMethod = viaFile;
-    REQUIRE(fetchData (inputMethod) == E_OK);
+    Status_t (*fp_InputFunction)() = readDataFromFile;
+    REQUIRE(fetchData (fp_InputFunction) == E_OK);
 }
 
 TEST_CASE("Get the data temperature and soc data from random number generator") {
-    dataFetchChannel inputMethod = viaRandomNumberGenerator;
-    REQUIRE(fetchData (inputMethod) == E_OK);
+    Status_t (*fp_InputFunction)() = fillRandomData;
+    REQUIRE(fetchData (fp_InputFunction) == E_OK);
 }
 
 TEST_CASE("Check the data is printed on console") {
-    dataFetchChannel inputMethod = viaFile;
-    dataOutputChannel outputMethod = viaConsole;
-    REQUIRE(fetchData (inputMethod) == E_OK);
-    REQUIRE(passDataToOutput (outputMethod) == E_OK);
+    Status_t (*fp_InputFunction)() = readDataFromFile;
+    Status_t (*fp_OutputFunction)() = passToConsole;
+    REQUIRE(fetchData (fp_InputFunction) == E_OK);
+    REQUIRE(fetchData (fp_OutputFunction) == E_OK);
 }
 
 TEST_CASE("Test the main fuction of the sender without input file") {
-    dataFetchChannel inputMethod = TestWithNoInput;
-    dataOutputChannel outputMethod = OutputChannelTest;
-    REQUIRE(senderMain(inputMethod, outputMethod) == E_NOT_OK);
+    Status_t (*fp_InputFunction)() = testWithNoInputFile;
+    Status_t (*fp_OutputFunction)() = testOutput;
+
+    REQUIRE(senderMain(fp_InputFunction, fp_OutputFunction) == E_NOT_OK);
 }
 
-
 TEST_CASE("Test the main fuction of the sender ") {
-    dataFetchChannel inputMethod = viaFile;
-    dataOutputChannel outputMethod = OutputChannelTest;
-    REQUIRE(senderMain(inputMethod, outputMethod) == E_TEST_OK);
+    Status_t (*fp_InputFunction)() = readDataFromFile;
+    Status_t (*fp_OutputFunction)() = testOutput;
+
+    REQUIRE(senderMain(fp_InputFunction, fp_OutputFunction) == E_TEST_OK);
 }

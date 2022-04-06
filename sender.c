@@ -3,10 +3,7 @@
 float Temperature  [BUFFER_SIZE] = {};
 float StateOfCharge[BUFFER_SIZE] = {};
 
-Status_t (*readBMSData[]) (float Temperature[],float StateOfCharge[])={readDataFromFile, fillRandomData, testInput}; // dataFetchChannel
-Status_t (*passBMSData[]) (float Temperature[],float StateOfCharge[])={passToConsole, testOutput};    // dataOutputChannel
-
-Status_t readDataFromFile(float Temperature[],float StateOfCharge[])
+Status_t readDataFromFile()
 {
     float temp, soc;
     Status_t Status= E_NOT_OK;
@@ -24,18 +21,32 @@ Status_t readDataFromFile(float Temperature[],float StateOfCharge[])
     return Status;
 }
 
-Status_t testInput(float Temperature[],float StateOfCharge[])
+Status_t testWithNoInputFile()
 {
     return E_NOT_OK;
 }
 
-Status_t fillRandomData(float Temperature[],float StateOfCharge[])
+Status_t fillRandomData()
 {
     for (int i = 0; i < BUFFER_SIZE; i++)
     {
         Temperature[i] = optimumValuesRandom(MINIMUM_TEMPERATURE, MAXIMUM_TEMPERATURE);
         StateOfCharge[i] = optimumValuesRandom(MINIMUM_CHARGESTATE, MAXIMUM_CHARGESTATE);
     }
+}
+
+Status_t passToConsole()
+{
+    for(int i = 0; i<BUFFER_SIZE; i++)
+    {
+        printf("%f \t\t %f\n",Temperature[i], StateOfCharge[i]);
+    }
+    return E_OK;
+}
+
+Status_t testOutput()
+{
+    return E_TEST_OK;
 }
 
 float optimumValuesRandom(float min, float max)
@@ -48,21 +59,7 @@ float optimumValuesRandom(float min, float max)
     return data;
 }
 
-Status_t passToConsole(float Temperature[],float StateOfCharge[])
-{
-    for(int i = 0; i<BUFFER_SIZE; i++)
-    {
-        printf("%f \t\t %f\n",Temperature[i], StateOfCharge[i]);
-    }
-    return E_OK;
-}
-
-Status_t testOutput(float Temperature[],float StateOfCharge[])
-{
-    return E_TEST_OK;
-}
-
-Status_t fetchData(dataFetchChannel inputMethod)
+Status_t fetchData(Status_t (*fp_InputFunction)())
 {
     Status_t Status = E_NOT_OK;
     Status = (*readBMSData[inputMethod])(Temperature,StateOfCharge);
@@ -70,20 +67,20 @@ Status_t fetchData(dataFetchChannel inputMethod)
 
 }
 
-Status_t passDataToOutput(dataOutputChannel outputMethod)
+Status_t passDataToOutput(Status_t (*fp_OutputFunction)())
 {
     Status_t Status = E_NOT_OK;
     Status = (*passBMSData[outputMethod])(Temperature,StateOfCharge);
     return Status;
 }
 
-Status_t senderMain(dataFetchChannel inputMethod, dataOutputChannel outputMethod)
+Status_t senderMain(Status_t (*fp_InputFunction)(), Status_t (*fp_OutputFunction)())
 {
     Status_t status = E_OK;
-    status = fetchData (inputMethod);
+    status = fp_InputFunction();
     if (status == E_OK)
     {
-        status = passDataToOutput (outputMethod);
+        status = fp_OutputFunction();
     }
     return status;
 }

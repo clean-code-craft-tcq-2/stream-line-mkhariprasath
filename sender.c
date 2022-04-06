@@ -37,10 +37,10 @@ Status_t passToConsole(float Temperature[],float StateOfCharge[])
 
 Status_t fetchData(dataFetchChannel inputMethod)
 {
-    return (*readBMSData[inputMethod])(batteryParam);
+    return (*readBMSData[inputMethod])(Temperature, StateOfCharge);
 }
 
 Status_t passDataToOutput(dataOutputChannel outputMethod)
 {
-    return (*passBMSData[outputMethod])(batteryParam);
+    return (*passBMSData[outputMethod])(Temperature, StateOfCharge);
 }

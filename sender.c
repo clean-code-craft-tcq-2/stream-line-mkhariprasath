@@ -75,16 +75,13 @@ Status_t passDataToOutput(dataOutputChannel outputMethod)
 
 Status_t senderMain(dataFetchChannel inputMethod, dataOutputChannel outputMethod)
 {
-    Status_t status = E_OK;
-    while (status == E_OK)
+    Status_t status = E_NOT_OK;
+    status = fetchData (inputMethod);
+    if (status == E_OK)
     {
-        status = fetchData (inputMethod);
-        if (status == E_OK)
-        {
-            status = passDataToOutput (outputMethod);
-            if ( (status == E_NOT_OK) || (status == E_TEST_OK) )
-                break;
-        }
+        status = passDataToOutput (outputMethod);
+        if ( (status == E_NOT_OK) || (status == E_TEST_OK) )
+            break;
     }
     return status;
 }

@@ -3,7 +3,7 @@
 float Temperature  [BUFFER_SIZE] = {};
 float StateOfCharge[BUFFER_SIZE] = {};
 
-char fileName[2] = "./InputData.txt";
+char fileName[25] = "./InputData.txt";
 
 FILE* openFile(char* l_fileName)
 {

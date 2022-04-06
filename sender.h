@@ -19,14 +19,11 @@ typedef enum
 {
 	E_NOT_OK,
 	E_OK,
-    	E_TEST_OK
+    E_TEST_OK
 }Status_t;
 
 Status_t readDataFromFile();
-Status_t testWithNoInputFile();
-Status_t fillRandomData();
 Status_t passToConsole();
-Status_t testOutput();
 float    optimumValuesRandom(float min, float max);
 
 Status_t fetchData(Status_t (*fp_InputFunction)());

@@ -19,3 +19,10 @@ TEST_CASE("Check the data is printed on console") {
     REQUIRE(fetchData (inputMethod) == E_OK);
     REQUIRE(passDataToOutput (outputMethod) == E_OK);
 }
+
+
+TEST_CASE("Test the main fuction of the sender ") {
+    dataFetchChannel inputMethod = viaFile;
+    dataOutputChannel outputMethod = OutputChannelTest;
+    REQUIRE(senderMain(inputMethod, outputMethod) == E_TEST_OK);
+}

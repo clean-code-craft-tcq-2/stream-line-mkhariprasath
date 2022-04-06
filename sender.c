@@ -21,20 +21,6 @@ Status_t readDataFromFile()
     return Status;
 }
 
-Status_t testWithNoInputFile()
-{
-    return E_NOT_OK;
-}
-
-Status_t fillRandomData()
-{
-    for (int i = 0; i < BUFFER_SIZE; i++)
-    {
-        Temperature[i] = optimumValuesRandom(MINIMUM_TEMPERATURE, MAXIMUM_TEMPERATURE);
-        StateOfCharge[i] = optimumValuesRandom(MINIMUM_CHARGESTATE, MAXIMUM_CHARGESTATE);
-    }
-}
-
 Status_t passToConsole()
 {
     for(int i = 0; i<BUFFER_SIZE; i++)
@@ -44,10 +30,6 @@ Status_t passToConsole()
     return E_OK;
 }
 
-Status_t testOutput()
-{
-    return E_TEST_OK;
-}
 
 float optimumValuesRandom(float min, float max)
 {
@@ -64,7 +46,6 @@ Status_t fetchData(Status_t (*fp_InputFunction)())
     Status_t Status = E_NOT_OK;
     Status = fp_InputFunction();
     return Status;
-
 }
 
 Status_t passDataToOutput(Status_t (*fp_OutputFunction)())
@@ -73,6 +54,9 @@ Status_t passDataToOutput(Status_t (*fp_OutputFunction)())
     Status = fp_OutputFunction();
     return Status;
 }
+
+
+//Main function - Input to the receiver
 
 Status_t senderMain(Status_t (*fp_InputFunction)(), Status_t (*fp_OutputFunction)())
 {

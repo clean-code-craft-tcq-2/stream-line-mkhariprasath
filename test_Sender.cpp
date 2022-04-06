@@ -9,6 +9,13 @@ TEST_CASE("Get the data temperature and soc data from file") {
     REQUIRE(fetchData (fp_InputFunction) == E_OK);
 }
 
+TEST_CASE("Get the data temperature and soc data from file which doesn't exist") {
+    fileName = "./InputDummy.txt";
+    Status_t (*fp_InputFunction)() = readDataFromFile;
+    REQUIRE(fetchData (fp_InputFunction) == E_OK);
+}
+
+
 TEST_CASE("Get the data temperature and soc data from random number generator") {
     Status_t (*fp_InputFunction)() = fillRandomData;
     REQUIRE(fetchData (fp_InputFunction) == E_OK);

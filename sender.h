@@ -33,7 +33,7 @@ Status_t fetchData(Status_t (*fp_InputFunction)());
 Status_t passDataToOutput(Status_t (*fp_OutputFunction)());
 
 // Main function to do send operation
-Status_t senderMain(Status_t (*fp_InputFunction)(), Status_t (*fp_OutputFunction)()) // input function pointer , output function pointer
+Status_t senderMain(Status_t (*fp_InputFunction)(), Status_t (*fp_OutputFunction)()); // input function pointer , output function pointer
 
 
 #endif // multiple include protection for SENDER_H

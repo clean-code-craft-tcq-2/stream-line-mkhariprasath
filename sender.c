@@ -12,11 +12,11 @@ Status_t readDataFromFile()
     FILE * fp = fopen("./InputData.txt","r");
     if (fp) 
     {
-        for(int i=0; fscanf(fp, "%f,%f,%f\n", &senID, &temp, &soc)!=EOF; i++)
+        for(int i=0; fscanf(fp,"%d,%f,%f\n", &senID, &temp, &soc)!=EOF; i++)
         {
+            sensorID[i]      = senID;
             Temperature[i]   = temp;
             StateOfCharge[i] = soc;
-            sensorID[i]      = senID; //
         }
         Status= E_OK;
     }
@@ -30,9 +30,9 @@ Status_t fillRandomData()
     Status_t Status= E_NOT_OK;
     for (int i = 0; i < NOOFDATA; i++)
     {
+        sensorID[i]      = optimumValuesRandom(MINIMUM_SENSORID   , MAXIMUM_SENSORID);
         Temperature[i]   = optimumValuesRandom(MINIMUM_TEMPERATURE, MAXIMUM_TEMPERATURE);
         StateOfCharge[i] = optimumValuesRandom(MINIMUM_CHARGESTATE, MAXIMUM_CHARGESTATE);
-        sensorID[i]      = optimumValuesRandom(MINIMUM_SENSORID   , MAXIMUM_SENSORID);
     }
     Status= E_OK;
     return Status;

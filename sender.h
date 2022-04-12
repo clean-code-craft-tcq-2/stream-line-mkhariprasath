@@ -5,7 +5,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-#define BUFFER_SIZE 50
+#define NOOFDATA 50
 
 #define MINIMUM_TEMPERATURE 0
 #define OPTIMUM_TEMPERATURE 25
@@ -14,6 +14,9 @@
 #define MINIMUM_CHARGESTATE 20
 #define OPTIMUM_CHARGESTATE 70
 #define MAXIMUM_CHARGESTATE 80
+
+#define MINIMUM_SENSORID 1
+#define MAXIMUM_SENSORID 2
 
 typedef enum
 {

@@ -1,19 +1,22 @@
 #include "sender.h"
 
-float Temperature  [BUFFER_SIZE] = {};
-float StateOfCharge[BUFFER_SIZE] = {};
+float Temperature  [NOOFDATA] = {};
+float StateOfCharge[NOOFDATA] = {};
+int   sensorID     [NOOFDATA] = {};
 
 Status_t readDataFromFile()
 {
     float temp, soc;
+    int senID;
     Status_t Status= E_NOT_OK;
     FILE * fp = fopen("./InputData.txt","r");
     if (fp) 
     {
-        for(int i=0; fscanf(fp, "%f,%f\n", &temp, &soc)!=EOF; i++)
+        for(int i=0; fscanf(fp, "%f,%f,%f\n", &temp, &soc, &senID)!=EOF; i++)
         {
-            Temperature[i] = temp;
+            Temperature[i]   = temp;
             StateOfCharge[i] = soc;
+            sensorID[i]      = senID; //
         }
         Status= E_OK;
     }
@@ -25,10 +28,11 @@ Status_t readDataFromFile()
 Status_t fillRandomData()
 {
     Status_t Status= E_NOT_OK;
-    for (int i = 0; i < BUFFER_SIZE; i++)
+    for (int i = 0; i < NOOFDATA; i++)
     {
-        Temperature[i] = optimumValuesRandom(MINIMUM_TEMPERATURE, MAXIMUM_TEMPERATURE);
+        Temperature[i]   = optimumValuesRandom(MINIMUM_TEMPERATURE, MAXIMUM_TEMPERATURE);
         StateOfCharge[i] = optimumValuesRandom(MINIMUM_CHARGESTATE, MAXIMUM_CHARGESTATE);
+        sensorID[i]      = optimumValuesRandom(MINIMUM_SENSORID   , MAXIMUM_SENSORID);
     }
     Status= E_OK;
     return Status;
@@ -36,9 +40,9 @@ Status_t fillRandomData()
 
 Status_t passToConsole()
 {
-    for(int i = 0; i<BUFFER_SIZE; i++)
+    for(int i = 0; i<NOOFDATA; i++)
     {
-        printf("%f \t\t %f\n",Temperature[i], StateOfCharge[i]);
+        printf("%f\t%f\t%f\n",sensorID[i], Temperature[i], StateOfCharge[i]);
     }
     return E_OK;
 }

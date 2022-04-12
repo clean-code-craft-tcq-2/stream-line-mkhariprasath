@@ -31,7 +31,7 @@ TEST_CASE("Test the main fuction of the sender without input file") {
 
 TEST_CASE("Test the main fuction of the sender ") {
     Status_t (*fp_InputFunction)() = readDataFromFile;
-    Status_t (*fp_OutputFunction)() = testOutput;
+    Status_t (*fp_OutputFunction)() = passToConsole;
 
     REQUIRE(senderMain(fp_InputFunction, fp_OutputFunction) == E_TEST_OK);
 }

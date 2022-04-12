@@ -12,7 +12,7 @@ Status_t readDataFromFile()
     FILE * fp = fopen("./InputData.txt","r");
     if (fp) 
     {
-        for(int i=0; fscanf(fp, "%f,%f,%f\n", &temp, &soc, &senID)!=EOF; i++)
+        for(int i=0; fscanf(fp, "%f,%f,%f\n", &senID, &temp, &soc)!=EOF; i++)
         {
             Temperature[i]   = temp;
             StateOfCharge[i] = soc;

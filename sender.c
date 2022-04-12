@@ -42,7 +42,7 @@ Status_t passToConsole()
 {
     for(int i = 0; i<NOOFDATA; i++)
     {
-        printf("%f\t%f\t%f\n",sensorID[i], Temperature[i], StateOfCharge[i]);
+        printf("%d\t%f\t%f\n",sensorID[i], Temperature[i], StateOfCharge[i]);
     }
     return E_OK;
 }

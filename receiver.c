@@ -1,6 +1,4 @@
 #include "receiver.h"
-#include "sender.h"
-
 
 Status_t GetFromConsole()
 {

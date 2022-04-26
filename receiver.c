@@ -57,7 +57,7 @@ void printOnConsole(float* Max ,float* Min, float* Ave)
 {
 	for(int i = 0; i<3; i++)
     {
-		 printf("%f,%f,%f\n", Max[i], Min[i], Ave[i]);
+		 printf("Max: %f,Min: %f,Average: %f\n", Max[i], Min[i], Ave[i]);
 	}
 }
 void receiverMainFunction(void (*fpPrintOnConsole)(float* ,float*, float*))

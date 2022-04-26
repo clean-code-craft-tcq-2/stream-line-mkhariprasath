@@ -26,9 +26,9 @@ typedef enum
 }Status_t;
 
 
- float Temperature  [NOOFDATA] = {};
- float StateOfCharge[NOOFDATA] = {};
- int   sensorID     [NOOFDATA] = {};
+ extern float Temperature  [NOOFDATA] = {};
+ extern float StateOfCharge[NOOFDATA] = {};
+ extern int   sensorID     [NOOFDATA] = {};
 
 
 Status_t readDataFromFile();

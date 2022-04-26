@@ -1,5 +1,9 @@
 #include "receiver.h"
 
+ float Temp[NOOFDATA] ={}; 
+ float SOC[NOOFDATA] = {};
+ float sensorsID[NOOFDATA] = {}; 
+
 Status_t GetFromConsole()
 {
     for(int i = 0; i <NOOFDATA; i++)

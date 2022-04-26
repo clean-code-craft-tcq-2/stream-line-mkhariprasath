@@ -9,7 +9,7 @@ TEST_CASE("Checks maximum value finding function")
 	float Temperature[]= {2.5,10,14,22.5,47,14.5,22,0.5,2.5};
 	float expectedOutput  = 47;
 	float actualOutput  = findMaxValue( Temperature,9);
-    REQUIRE(result==expectedTemp);
+        REQUIRE(actualOutput==expectedOutput);
 }
 
 
@@ -18,7 +18,7 @@ TEST_CASE("Checks Minimum value finding function")
 	float Temperature[]= {2.5,10,14,22.5,47,14.5,22,0.5,2.5};
 	float expectedOutput  = 0.5;
 	float actualOutput  = findMinValue( Temperature,9);
-    REQUIRE(result == expectedTemp);
+       REQUIRE(actualOutput==expectedOutput);
 }
 
 TEST_CASE("Checks average value finding function")
@@ -26,6 +26,6 @@ TEST_CASE("Checks average value finding function")
 	float Temperature[]= {2.5,10,14,22.5,47,14.5,22,0.5,2.5};
 	float expectedOutput  = 17.299999;
 	float actualOutput  = aveOfLastConsecutiveValues(Temperature,9);
-    REQUIRE(result == expectedTemp);
+        REQUIRE(actualOutput==expectedOutput);
 }
 

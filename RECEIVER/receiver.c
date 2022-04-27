@@ -1,4 +1,5 @@
-#include "receiver.h"
+#include"receiver.h"
+#include"../sender.h"
 
  float Temp[NOOFDATA] ={}; 
  float SOC[NOOFDATA] = {};

@@ -1,8 +1,8 @@
 #include "sender.h"
 
-  float Temperature  [NOOFDATA] = {};
-  float StateOfCharge[NOOFDATA] = {};
-  int   sensorID     [NOOFDATA] = {};
+   Temperature  [NOOFDATA] = {};
+StateOfCharge[NOOFDATA] = {};
+  sensorID     [NOOFDATA] = {};
 
 Status_t readDataFromFile()
 {

@@ -4,7 +4,7 @@
 
 extern float Temp[NOOFDATA]; 
 extern float SOC[NOOFDATA] ;
-extern float sensorsID[NOOFDATA]; 
+extern int sensorsID[NOOFDATA]; 
 
 Status_t GetFromConsole();
 float findMaxValue(float * input,int noOfElements);

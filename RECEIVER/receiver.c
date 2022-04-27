@@ -9,9 +9,9 @@ Status_t GetFromConsole()
 {
     for(int i = 0; i <NOOFDATA; i++)
     {
-        //  Temp[i] = Temperature[i];
-        //  SOC[i] = StateOfCharge[i];
-      //    sensorsID[i] =  (float)sensorID[i];
+         Temp[i] = Temperature[i];
+         SOC[i] = StateOfCharge[i];
+       sensorsID[i] =  (float)sensorID[i];
          
     }
     return E_OK;

@@ -25,6 +25,11 @@ typedef enum
     E_TEST_OK
 }Status_t;
 
+ float  Temperature  [NOOFDATA] ;
+ float StateOfCharge[NOOFDATA];
+ int   sensorID     [NOOFDATA] ;
+
+
 Status_t readDataFromFile();
 Status_t fillRandomData();
 Status_t passToConsole();

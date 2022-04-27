@@ -7,6 +7,9 @@ extern float SOC[NOOFDATA] ;
 extern float sensorsID[NOOFDATA]; 
 
 
+ extern float Temperature  [NOOFDATA] ;
+ extern float StateOfCharge[NOOFDATA]; 
+ extern int   sensorID     [NOOFDATA] ;
 
 Status_t GetFromConsole();
 float findMaxValue(float * input,int noOfElements);

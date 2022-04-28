@@ -6,7 +6,7 @@
 
 
 Status_t readDataFromFile()
-{    suriya = 1;
+{    
     float temp, soc;
     int senID;
     Status_t Status= E_NOT_OK;

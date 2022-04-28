@@ -28,7 +28,7 @@ typedef enum
  extern float  Temperature  [NOOFDATA] ;
 extern  float StateOfCharge[NOOFDATA];
  extern int   sensorID     [NOOFDATA] ;
-
+extern int suriya;
 
 Status_t readDataFromFile();
 Status_t fillRandomData();

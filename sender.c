@@ -3,7 +3,6 @@
   float  Temperature  [NOOFDATA] ={} ;
   float StateOfCharge[NOOFDATA] ={};
   int   sensorID     [NOOFDATA]={} ;
-   int suriya  = 0;
 
 
 Status_t readDataFromFile()

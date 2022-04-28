@@ -9,7 +9,7 @@ float aveOfLastConsecutiveValues(float * input,int noOfElements);
 void printOnConsole(float* Max ,float* Min, float* Ave);
 void receiverMainFunction(void (*fpPrintOnConsole)(float* ,float*, float*));
 
-
+ Status_t readDataFromFile();
 
 extern Status_t readDataFromFile();
 extern Status_t fillRandomData();

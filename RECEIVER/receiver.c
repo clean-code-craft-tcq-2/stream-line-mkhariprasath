@@ -1,5 +1,7 @@
 #include"receiver.h"
-
+  float  Temperature  [NOOFDATA] ={} ;
+  float StateOfCharge[NOOFDATA] ={};
+  int   sensorID     [NOOFDATA]={} ;
 
  float Temp[NOOFDATA] ={}; 
  float SOC[NOOFDATA] = {};

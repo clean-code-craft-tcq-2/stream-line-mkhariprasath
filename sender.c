@@ -1,5 +1,8 @@
 #include "sender.h"
 
+int suriya ;
+
+
 Status_t readDataFromFile()
 {    suriya = 1;
     float temp, soc;

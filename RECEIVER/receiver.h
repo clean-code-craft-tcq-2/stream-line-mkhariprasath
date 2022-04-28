@@ -2,10 +2,6 @@
 
 #define NO_OF_CONSECUTIVE_AVERAGE 5
 
-extern float Temp[NOOFDATA]; 
-extern float SOC[NOOFDATA] ;
-extern int sensorsID[NOOFDATA]; 
-
 Status_t GetFromConsole();
 float findMaxValue(float * input,int noOfElements);
 float findMinValue(float * input,int noOfElements);

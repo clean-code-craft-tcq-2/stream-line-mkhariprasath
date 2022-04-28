@@ -17,7 +17,7 @@ jobs:
     - name: build sender
       run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o GeneratedSender *.c*     
     - name: build receiver
-      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage  -o GeneratedReceiver RECEIVER/*.c* *.h*
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage  -o GeneratedReceiver RECEIVER/*.c* *.c*
     - name: run sender
       run: ./GeneratedSender
     - name: run sender | receiver

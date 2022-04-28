@@ -12,6 +12,7 @@ Status_t GetFromConsole()
          Temp[i] = Temperature[i];
          SOC[i] = StateOfCharge[i];
        sensorsID[i] =  (float)sensorID[i];
+	    
          
     }
     return E_OK;
@@ -67,6 +68,8 @@ void receiverMainFunction(void (*fpPrintOnConsole)(float* ,float*, float*))
     	float Max[3], Min[3] ,Ave[3];
 
 	Status_t status = GetFromConsole();
+	Status_t = suriya;
+	
 
 	 Max[0] = findMaxValue( Temp,9);
      Min[0] = findMinValue( Temp,9);

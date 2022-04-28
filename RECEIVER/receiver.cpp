@@ -33,7 +33,7 @@ TEST_CASE("Get the data from sensor by sender and pass the data to receiver")
 {
     Status_t (*fp_InputFunction)() = readDataFromFile;
     Status_t (*fp_OutputFunction)() = passToConsole;
-    void receiverMainFunction(&printOnConsole);
+    receiverMainFunction(&printOnConsole);
     REQUIRE(fetchData (fp_InputFunction) == E_OK);
     REQUIRE(passDataToOutput (fp_OutputFunction) == E_OK);
  //REQUIRE(passDataToOutput (fp_OutputFunction) == E_OK);

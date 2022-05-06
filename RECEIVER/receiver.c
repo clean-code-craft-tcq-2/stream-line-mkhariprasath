@@ -74,8 +74,7 @@ void receiverMainFunction(void (*fpPrintOnConsole)(float* ,float*, float*))
 {
     
     	float Max[3], Min[3] ,Ave[3];
-
-	Status_t status = GetFromConsole();
+ GetFromConsole();
 	
 
 	 Max[0] = findMaxValue( Temp,9);

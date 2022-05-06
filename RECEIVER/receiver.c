@@ -11,11 +11,11 @@ Status_t GetFromConsole()
 {
 	
     Status_t (*fp_InputFunction)() = readDataFromFile;
-    Status_t (*fp_OutputFunction)() = testOutput;
+    Status_t (*fp_OutputFunction)() = passToConsole;
 
    senderMain(fp_InputFunction, fp_OutputFunction) ;
-}
- /*   for(int i = 0; i <NOOFDATA; i++)
+
+ for(int i = 0; i <NOOFDATA; i++)
     {
          Temp[i] = Temperature[i];
          SOC[i] = StateOfCharge[i];
@@ -24,7 +24,7 @@ Status_t GetFromConsole()
          
     }
     return E_OK;
-}*/
+}
 
 
 float findMaxValue(float * input,int noOfElements)

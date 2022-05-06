@@ -19,10 +19,8 @@ jobs:
     - name: build receiver
       run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage  -o GeneratedReceiver RECEIVER/*.c* *.c*
       
-    - name: run sender
-      run: ./GeneratedSender
-    - name: run sender | receiver
-      run: ./GeneratedSender | ./GeneratedReceiver
+    - name: run s receiver
+      run:  ./GeneratedReceiver
 
     - name: collect coverage
       run: gcovr --gcov-exclude=".*test.*" -r . --html --html-details -o coverage.html

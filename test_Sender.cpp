@@ -4,7 +4,7 @@
 #include "sender.h"
 #include "ut_Sender.h"
 #include <string.h>
-
+/*
 TEST_CASE("Get the data temperature and soc data from file") {
     Status_t (*fp_InputFunction)() = readDataFromFile;
     REQUIRE(fetchData (fp_InputFunction) == E_OK);
@@ -28,7 +28,7 @@ TEST_CASE("Test the main fuction of the sender ") {
 
     REQUIRE(senderMain(fp_InputFunction, fp_OutputFunction) == E_TEST_OK);
 }
-
+*/
 TEST_CASE("Check the data is printed on console") {
     Status_t (*fp_InputFunction)() = readDataFromFile;
     Status_t (*fp_OutputFunction)() = passToConsole;

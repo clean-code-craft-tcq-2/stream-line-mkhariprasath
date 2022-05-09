@@ -6,11 +6,11 @@
 TEST_CASE("Check Sensor ID is taken properly from the console data")
  {
 	int sensorID[50];
-	char consoleData[5][20] = ( "1, 20, 40",
+	char consoleData[5][20] = { "1, 20, 40",
 				  " 2, 22, 42",
 				  " 4, 33,43",
 				   "3,44,54",
-				  " 5,55,65");
+				  " 5,55,65"};
 	collectIdData( consoleData, sensorID, 5);
 				  
 	   REQUIRE(sensorID[0] == 1);

@@ -24,8 +24,13 @@ TEST_CASE("Checks Minimum value finding function")
 TEST_CASE("Checks average value finding function")
  {
 	int TemperatureInput[]= {2,10,14,22,47,14,22,5,2};
-	int expectedOutput  = 27;
+	int expectedOutput  = 18;
 	int actualOutput  = aveOfLastConsecutiveValues(TemperatureInput,9);
         REQUIRE(actualOutput==expectedOutput);
 }
 
+TEST_CASE("Checks sender receiver pipelining")
+ {
+receiverMainFunction(&printOnConsole);
+{
+	

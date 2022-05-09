@@ -30,7 +30,7 @@ TEST_CASE("Check temperature data is taken properly from the console data")
 				   "3,44,54",
 				  " 5,55,65"};
 	
-	collecttempData( consoleData, temp, 5);
+	collectTempData( consoleData, temp, 5);
 				  
 	   REQUIRE(temp[0] == 20);
            REQUIRE(temp[1] == 22);

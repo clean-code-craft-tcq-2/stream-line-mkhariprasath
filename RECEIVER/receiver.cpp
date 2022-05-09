@@ -11,7 +11,7 @@ TEST_CASE("Check Sensor ID is taken properly from the console data")
 				  " 4, 33,43",
 				   "3,44,54",
 				  " 5,55,65"};
-	collectIdData( consoleData, sensorID, 5);
+	collectIdData( consoleData, sensorID, 1);
 				  
 	   REQUIRE(sensorID[0] == 1);
             REQUIRE(sensorID[1] == 2);

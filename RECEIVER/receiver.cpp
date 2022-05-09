@@ -32,5 +32,5 @@ TEST_CASE("Checks average value finding function")
 TEST_CASE("Checks sender receiver pipelining")
  {
 receiverMainFunction(&printOnConsole);
-{
+}
 	

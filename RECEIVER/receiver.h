@@ -1,5 +1,5 @@
 #include <string.h>
-#include <cstdio.h>
+
 
 #define NO_OF_CONSECUTIVE_AVERAGE 5
 

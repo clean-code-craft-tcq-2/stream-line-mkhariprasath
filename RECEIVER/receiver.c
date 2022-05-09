@@ -18,10 +18,10 @@ void GetFromConsole(char consoleData[50][20])
 {
     char line[50];
     char *result;
-	result = gets(line);
+	result = fgets(line,50,stdin);
     for(int i = 0;result != NULL;i++)
         {
-			result = gets(line);
+	result = fgets(line,50,stdin);
         strcpy(consoleData[i], line);       
         
     }

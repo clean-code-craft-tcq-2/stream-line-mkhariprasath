@@ -33,6 +33,23 @@ void collectTempData(char input[50][20], int tempData[50], int size)
     }
 }
 
+
+void collectSocData(char input[50][20], int socData[50], int size)
+{
+    int socDataString;
+    for (int i = 0; i < size; i++)
+    {
+       char *token = strtok(consoleData[i], ",");
+        while( token != NULL ) 
+        {
+        socDataString[i] = atoi(token);
+        token = strtok(NULL, ",");
+   
+        }
+        
+    }
+}		       
+		       
 int findMaxValue(int * input,int noOfElements)
 {   float maxValue = input[0];
 
@@ -85,13 +102,13 @@ void receiverMainFunction(void (*fpPrintOnConsole)(int* ,int*, int*))
 	GetFromConsole(consoleData);
 collectIdData(consoleData,idData,50);
 collectTempData(consoleData,tempData,50);
-//collectSocData(consoleData,socData,50);
+collectSocData(consoleData,socData,50);
 	 Max[0] = findMaxValue( tempData,9);
      Min[0] = findMinValue( tempData,9);
      Ave[0] = aveOfLastConsecutiveValues(tempData,9);
-	// Max[1] = findMaxValue( SOC,9);
-    // Min[1] = findMinValue( SOC,9);
-    // Ave[1] = aveOfLastConsecutiveValues(SOC,9);	
+    Max[1] = findMaxValue( SOC,9);
+    Min[1] = findMinValue( SOC,9);
+    Ave[1] = aveOfLastConsecutiveValues(SOC,9);	
 	 Max[2] = findMaxValue( idData,9);
      Min[2] = findMinValue( idData,9);
      Ave[2] = aveOfLastConsecutiveValues(idData,9);

@@ -36,13 +36,12 @@ void collectTempData(char input[50][20], int tempData[50], int size)
 
 void collectSocData(char input[50][20], int socData[50], int size)
 {
-    int socDataString;
-    for (int i = 0; i < size; i++)
+        for (int i = 0; i < size; i++)
     {
        char *token = strtok(consoleData[i], ",");
         while( token != NULL ) 
         {
-        socDataString[i] = atoi(token);
+        socData[i] = atoi(token);
         token = strtok(NULL, ",");
    
         }

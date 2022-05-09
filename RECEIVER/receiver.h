@@ -1,16 +1,9 @@
+#include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 
 #define NO_OF_CONSECUTIVE_AVERAGE 5
-
-extern float Temp[NOOFDATA]; 
-extern float SOC[NOOFDATA] ;
-extern float sensorsID[NOOFDATA]; 
-
-
- extern float Temperature  [NOOFDATA] ;
- extern float StateOfCharge[NOOFDATA]; 
- extern int   sensorID     [NOOFDATA] ;
 
 void GetFromConsole();
 void collectIdData(char consoleData[50][20], int ampData[50], int size);

@@ -49,7 +49,7 @@ void collectTempData(char input[50][20], int tempData[50], int size)
     }
 }
 
-float findMaxValue(float * input,int noOfElements)
+int findMaxValue(int * input,int noOfElements)
 {   float maxValue = input[0];
 
 	for (int i =1; i < noOfElements;i++)
@@ -60,7 +60,7 @@ float findMaxValue(float * input,int noOfElements)
 	return maxValue;
 }
 
-float findMinValue(float * input,int noOfElements)
+int findMinValue(int * input,int noOfElements)
 {   float minValue = input[0];
 
 	for (int i =1; i < noOfElements;i++)
@@ -71,7 +71,7 @@ float findMinValue(float * input,int noOfElements)
 return minValue;
 }
 
-float aveOfLastConsecutiveValues(float * input,int noOfElements)
+int aveOfLastConsecutiveValues(int * input,int noOfElements)
 {
 int	startIndex = noOfElements - NO_OF_CONSECUTIVE_AVERAGE ;
 	float total = 0;
@@ -85,18 +85,18 @@ int	startIndex = noOfElements - NO_OF_CONSECUTIVE_AVERAGE ;
 	return (total/NO_OF_CONSECUTIVE_AVERAGE);
 }
 
-void printOnConsole(float* Max ,float* Min, float* Ave)
+void printOnConsole(int* Max ,int* Min, int* Ave)
 {
 	for(int i = 0; i<2; i++)
     {
-		 printf("Max: %f,Min: %f,Average: %f\n", Max[i], Min[i], Ave[i]);
+		 printf("Max: %d,Min: %d,Average: %d\n", Max[i], Min[i], Ave[i]);
 	}
 }
-void receiverMainFunction(void (*fpPrintOnConsole)(float* ,float*, float*))
+void receiverMainFunction(void (*fpPrintOnConsole)(int* ,int*, int*))
 {
     char consoleData[50][20];
-	int tempData[50],idData[5],socData[50];
-    	float Max[3], Min[3] ,Ave[3];
+	int tempData[50],idData[50],socData[50];
+    	int Max[3], Min[3] ,Ave[3];
 
 	GetFromConsole(consoleData);
 collectIdData(consoleData,idData,50);

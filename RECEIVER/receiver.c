@@ -18,23 +18,23 @@ void collectIdData(char consoleData[50][20], int sensorIdData[50], int size)
     for (int i = 0; i < size; i++)
     {
         char *DataString = strtok(consoleData[i], ",");
-          sensorIdData[i = atoi(strtok(ampDataString, " "));     	  
+          sensorIdData[i] = atoi(strtok(DataString, " "));     	  
      
     }
 }
 
-void collectTempData(char input[50][20], int tempData[50], int size)
+void collectTempData(char consoleData[50][20], int tempData[50], int size)
 {
     for (int i = 0; i < size; i++)
     {
-        char *tempDataString = strtok(input[i], ",");
+        char *tempDataString = strtok(consoleData[i], ",");
        tempData[i]  =  atoi(strtok(NULL, ","));
         
     }
 }
 
 
-void collectSocData(char input[50][20], int socData[50], int size)
+void collectSocData(char consoleData[50][20], int socData[50], int size)
 {
         for (int i = 0; i < size; i++)
     {
@@ -102,15 +102,15 @@ void receiverMainFunction(void (*fpPrintOnConsole)(int* ,int*, int*))
 collectIdData(consoleData,idData,50);
 collectTempData(consoleData,tempData,50);
 collectSocData(consoleData,socData,50);
-	 Max[0] = findMaxValue( tempData,9);
-     Min[0] = findMinValue( tempData,9);
-     Ave[0] = aveOfLastConsecutiveValues(tempData,9);
-    Max[1] = findMaxValue( SOC,9);
-    Min[1] = findMinValue( SOC,9);
-    Ave[1] = aveOfLastConsecutiveValues(SOC,9);	
-	 Max[2] = findMaxValue( idData,9);
-     Min[2] = findMinValue( idData,9);
-     Ave[2] = aveOfLastConsecutiveValues(idData,9);
+	 Max[0] = findMaxValue( tempData,50);
+     Min[0] = findMinValue( tempData,50);
+     Ave[0] = aveOfLastConsecutiveValues(tempData,50);
+    Max[1] = findMaxValue( socData,50);
+    Min[1] = findMinValue( socData,50);
+    Ave[1] = aveOfLastConsecutiveValues(socData,50);	
+	 Max[2] = findMaxValue( idData,50);
+     Min[2] = findMinValue( idData,50);
+     Ave[2] = aveOfLastConsecutiveValues(idData,50);
       
 	 fpPrintOnConsole(Max,Min,Ave);
 }

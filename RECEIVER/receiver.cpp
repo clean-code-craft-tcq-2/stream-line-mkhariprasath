@@ -32,11 +32,11 @@ TEST_CASE("Check temperature data is taken properly from the console data")
 	
 	collecttempData( consoleData, temp, 5);
 				  
-	   REQUIRE(sensorID[0] == 20);
-           REQUIRE(sensorID[1] == 22);
-           REQUIRE(sensorID[2] == 33);
-           REQUIRE(sensorID[3] == 44);
-	   REQUIRE(sensorID[4] == 55);
+	   REQUIRE(temp[0] == 20);
+           REQUIRE(temp[1] == 22);
+           REQUIRE(temp[2] == 33);
+           REQUIRE(temp[3] == 44);
+	   REQUIRE(temp[4] == 55);
 }
 TEST_CASE("Check SOC value is taken properly from the console data")
  {
@@ -48,11 +48,11 @@ TEST_CASE("Check SOC value is taken properly from the console data")
 				  " 5,55,65"};
 	
 	collectIdData( consoleData, SOC, 5);				  
-	   REQUIRE(sensorID[0] == 40);
-           REQUIRE(sensorID[1] == 42);
-           REQUIRE(sensorID[2] == 43);
-           REQUIRE(sensorID[3] == 54);
-	   REQUIRE(sensorID[4] == 65);
+	   REQUIRE(SOC[0] == 40);
+           REQUIRE(SOC[1] == 42);
+           REQUIRE(SOC[2] == 43);
+           REQUIRE(SOC[3] == 54);
+	   REQUIRE(SOC[4] == 65);
 }
 TEST_CASE("Checks maximum value finding function")
  {

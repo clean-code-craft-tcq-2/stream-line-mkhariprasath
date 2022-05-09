@@ -28,9 +28,8 @@ void collectTempData(char input[50][20], int tempData[50], int size)
     for (int i = 0; i < size; i++)
     {
         char *tempDataString = strtok(input[i], ",");
-        char *tempDataValueString = strtok(NULL, " ");
-        int tempDataValue = atoi(strtok(NULL, " "));
-        tempData[i] = tempDataValue;
+       tempData[i]  =  atoi(strtok(NULL, ","));
+        
     }
 }
 

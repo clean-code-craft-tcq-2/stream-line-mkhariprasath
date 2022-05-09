@@ -47,7 +47,7 @@ TEST_CASE("Check SOC value is taken properly from the console data")
 				   "3,44,54",
 				  " 5,55,65"};
 	
-	collectIdData( consoleData, SOC, 5);				  
+	collectSocData( consoleData, SOC, 5);				  
 	   REQUIRE(SOC[0] == 40);
            REQUIRE(SOC[1] == 42);
            REQUIRE(SOC[2] == 43);

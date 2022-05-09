@@ -32,10 +32,8 @@ void collectIdData(char consoleData[50][20], int ampData[50], int size)
     for (int i = 0; i < size; i++)
     {
         char *ampDataString = strtok(consoleData[i], ",");
-        char *ampDataValueString = strtok(ampDataString, " ");
-      //  int ampDataValue = atoi(strtok(NULL, " "));
-	      int ampDataValue = 5;
-        ampData[i] = ampDataValue;
+        int ampDataValueString = atoi(strtok(ampDataString, " "));     	  
+        ampData[i] = ampDataValueString;
     }
 }
 

@@ -45,8 +45,3 @@ TEST_CASE("Checks average value finding function")
         REQUIRE(actualOutput==expectedOutput);
 }
 
-TEST_CASE("Checks sender receiver pipelining")
- {
-receiverMainFunction(&printOnConsole);
-}
-	

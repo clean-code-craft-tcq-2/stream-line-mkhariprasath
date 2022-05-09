@@ -1,10 +1,6 @@
 #include"receiver.h"
 
 
- float Temp[NOOFDATA] ={}; 
- float SOC[NOOFDATA] = {};
- float sensorsID[NOOFDATA] = {}; 
-
 /*Status_t GetFromConsole()
 {
     for(int i = 0; i <NOOFDATA; i++)
@@ -104,17 +100,17 @@ void receiverMainFunction(void (*fpPrintOnConsole)(float* ,float*, float*))
 
 	GetFromConsole(consoleData);
 collectIdData(consoleData,idData,50);
-collectTempData(consoleData,TempData,50);
+collectTempData(consoleData,tempData,50);
 //collectSocData(consoleData,socData,50);
-	 Max[0] = findMaxValue( Temp,9);
-     Min[0] = findMinValue( Temp,9);
-     Ave[0] = aveOfLastConsecutiveValues(Temp,9);
+	 Max[0] = findMaxValue( tempData,9);
+     Min[0] = findMinValue( tempData,9);
+     Ave[0] = aveOfLastConsecutiveValues(tempData,9);
 	// Max[1] = findMaxValue( SOC,9);
     // Min[1] = findMinValue( SOC,9);
     // Ave[1] = aveOfLastConsecutiveValues(SOC,9);	
-	 Max[2] = findMaxValue( sensorsID,9);
-     Min[2] = findMinValue( sensorsID,9);
-     Ave[2] = aveOfLastConsecutiveValues(sensorsID,9);
+	 Max[2] = findMaxValue( idData,9);
+     Min[2] = findMinValue( idData,9);
+     Ave[2] = aveOfLastConsecutiveValues(idData,9);
       
 	 fpPrintOnConsole(Max,Min,Ave);
 }

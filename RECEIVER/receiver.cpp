@@ -21,6 +21,39 @@ TEST_CASE("Check Sensor ID is taken properly from the console data")
 	REQUIRE(sensorID[4] == 5);
 }
 
+TEST_CASE("Check temperature data is taken properly from the console data")
+ {
+	int temp[50];
+	char consoleData[5][20] = { "1, 20, 40",
+				  " 2, 22, 42",
+				  " 4, 33,43",
+				   "3,44,54",
+				  " 5,55,65"};
+	
+	collecttempData( consoleData, temp, 5);
+				  
+	   REQUIRE(sensorID[0] == 20);
+           REQUIRE(sensorID[1] == 22);
+           REQUIRE(sensorID[2] == 33);
+           REQUIRE(sensorID[3] == 44);
+	   REQUIRE(sensorID[4] == 55);
+}
+TEST_CASE("Check SOC value is taken properly from the console data")
+ {
+	int SOC[50];
+	char consoleData[5][20] = { "1, 20, 40",
+				  " 2, 22, 42",
+				  " 4, 33,43",
+				   "3,44,54",
+				  " 5,55,65"};
+	
+	collectIdData( consoleData, SOC, 5);				  
+	   REQUIRE(sensorID[0] == 40);
+           REQUIRE(sensorID[1] == 42);
+           REQUIRE(sensorID[2] == 43);
+           REQUIRE(sensorID[3] == 54);
+	   REQUIRE(sensorID[4] == 65);
+}
 TEST_CASE("Checks maximum value finding function")
  {
 	int TemperatureInput[]= {2,10,14,22,47,14,22,5,1};

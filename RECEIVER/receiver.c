@@ -1,39 +1,25 @@
 #include"receiver.h"
 
-
-/*Status_t GetFromConsole()
-{
-    for(int i = 0; i <NOOFDATA; i++)
-    {
-        //  Temp[i] = Temperature[i];
-        //  SOC[i] = StateOfCharge[i];
-      //    sensorsID[i] =  (float)sensorID[i];
-         
-    }
-    return E_OK;
-}
-*/
-
 void GetFromConsole(char consoleData[50][20])
 {
     char line[50];
     char *result;
-	result = fgets(line,50,stdin);
+    result = fgets(line,50,stdin);
     for(int i = 0;result != NULL;i++)
-        {
+    {
 	result = fgets(line,50,stdin);
         strcpy(consoleData[i], line);       
         
     }
 }
 
-void collectIdData(char consoleData[50][20], int ampData[50], int size)
+void collectIdData(char consoleData[50][20], int sensorIdData[50], int size)
 {
     for (int i = 0; i < size; i++)
     {
-        char *ampDataString = strtok(consoleData[i], ",");
-        int ampDataValueString = atoi(strtok(ampDataString, " "));     	  
-        ampData[i] = ampDataValueString;
+        char *DataString = strtok(consoleData[i], ",");
+          sensorIdData[i = atoi(strtok(ampDataString, " "));     	  
+     
     }
 }
 

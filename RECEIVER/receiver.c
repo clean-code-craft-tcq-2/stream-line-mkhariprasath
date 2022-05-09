@@ -1,40 +1,40 @@
 #include"receiver.h"
 
-void GetFromConsole(char consoleData[50][20])
+void GetFromConsole(char consoleData[NOOFDATA][20])
 {
-    char line[50];
+    char line[NOOFDATA];
     char *result;
-    result = fgets(line,50,stdin);
+    result = fgets(line,NOOFDATA,stdin);
     for(int i = 0;result != NULL;i++)
     {
-	result = fgets(line,50,stdin);
+	result = fgets(line,NOOFDATA,stdin);
         strcpy(consoleData[i], line);       
         
     }
 }
 
-void collectIdData(char consoleData[50][20], int sensorIdData[50], int size)
+void collectIdData(char consoleData[NOOFDATA][20], int sensorIdData[NOOFDATA], int size)
 {
     for (int i = 0; i < size; i++)
     {
         char *DataString = strtok(consoleData[i], ",");
-          sensorIdData[i] = atoi(strtok(DataString, " "));     	  
+        sensorIdData[i] = atoi(strtok(DataString, " "));     	  
      
     }
 }
 
-void collectTempData(char consoleData[50][20], int tempData[50], int size)
+void collectTempData(char consoleData[NOOFDATA][20], int tempData[NOOFDATA], int size)
 {
     for (int i = 0; i < size; i++)
     {
         char *tempDataString = strtok(consoleData[i], ",");
-       tempData[i]  =  atoi(strtok(NULL, ","));
+        tempData[i]  =  atoi(strtok(NULL, ","));
         
     }
 }
 
 
-void collectSocData(char consoleData[50][20], int socData[50], int size)
+void collectSocData(char consoleData[NOOFDATA][20], int socData[NOOFDATA], int size)
 {
         for (int i = 0; i < size; i++)
     {
@@ -90,27 +90,28 @@ void printOnConsole(int* Max ,int* Min, int* Ave)
 	for(int i = 0; i<2; i++)
     {
 		 printf("Max: %d,Min: %d,Average: %d\n", Max[i], Min[i], Ave[i]);
-	}
+    }
 }
 void receiverMainFunction(void (*fpPrintOnConsole)(int* ,int*, int*))
 {
-    char consoleData[50][20];
-	int tempData[50],idData[50],socData[50];
+        char consoleData[NOOFDATA][20];
+	int tempData[NOOFDATA],idData[NOOFDATA],socData[NOOFDATA];
     	int Max[3], Min[3] ,Ave[3];
 
 	GetFromConsole(consoleData);
-collectIdData(consoleData,idData,50);
-collectTempData(consoleData,tempData,50);
-collectSocData(consoleData,socData,50);
-	 Max[0] = findMaxValue( tempData,50);
-     Min[0] = findMinValue( tempData,50);
-     Ave[0] = aveOfLastConsecutiveValues(tempData,50);
-    Max[1] = findMaxValue( socData,50);
-    Min[1] = findMinValue( socData,50);
-    Ave[1] = aveOfLastConsecutiveValues(socData,50);	
-	 Max[2] = findMaxValue( idData,50);
-     Min[2] = findMinValue( idData,50);
-     Ave[2] = aveOfLastConsecutiveValues(idData,50);
+        collectIdData(consoleData,idData,NOOFDATA);
+        collectTempData(consoleData,tempData,NOOFDATA);
+        collectSocData(consoleData,socData,NOOFDATA);
+	
+	     Max[0] = findMaxValue( tempData,NOOFDATA);
+	     Min[0] = findMinValue( tempData,NOOFDATA);
+	     Ave[0] = aveOfLastConsecutiveValues(tempData,NOOFDATA);
+	     Max[1] = findMaxValue( socData,NOOFDATA);
+	     Min[1] = findMinValue( socData,NOOFDATA);
+	     Ave[1] = aveOfLastConsecutiveValues(socData,NOOFDATA);	
+	     Max[2] = findMaxValue( idData,NOOFDATA);
+	     Min[2] = findMinValue( idData,NOOFDATA);
+	     Ave[2] = aveOfLastConsecutiveValues(idData,NOOFDATA);
       
-	 fpPrintOnConsole(Max,Min,Ave);
+	fpPrintOnConsole(Max,Min,Ave);
 }

@@ -22,9 +22,10 @@ void GetFromConsole(char consoleData[50][20])
 {
     char line[50];
     char *result;
+	result = gets(line);
     for(int i = 0;result != NULL;i++)
         {
-			result = fgets(line);
+			result = gets(line);
         strcpy(consoleData[i], line);       
         
     }

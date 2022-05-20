@@ -1,21 +1,55 @@
-#include "receiver.h"
-#include "sender.h"
+#include"receiver.h"
 
-
-Status_t GetFromConsole()
+void GetFromConsole(char consoleData[NOOFDATA][20])
 {
-    for(int i = 0; i <NOOFDATA; i++)
+    char line[NOOFDATA];
+    char *result;
+    result = fgets(line,NOOFDATA,stdin);
+    for(int i = 0;result != NULL;i++)
     {
-          Temp[i] = Temperature[i];
-          SOC[i] = StateOfCharge[i];
-          sensorsID[i] =  (float)sensorID[i];
-         
+	result = fgets(line,NOOFDATA,stdin);
+        strcpy(consoleData[i], line);       
+        
     }
-    return E_OK;
+}
+
+void collectIdData(char consoleData[NOOFDATA][20], int sensorIdData[NOOFDATA], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        char *DataString = strtok(consoleData[i], ",");
+        sensorIdData[i] = atoi(strtok(DataString, " "));     	  
+     
+    }
+}
+
+void collectTempData(char consoleData[NOOFDATA][20], int tempData[NOOFDATA], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        char *tempDataString = strtok(consoleData[i], ",");
+        tempData[i]  =  atoi(strtok(NULL, ","));
+        
+    }
 }
 
 
-float findMaxValue(float * input,int noOfElements)
+void collectSocData(char consoleData[NOOFDATA][20], int socData[NOOFDATA], int size)
+{
+        for (int i = 0; i < size; i++)
+    {
+       char *token = strtok(consoleData[i], ",");
+        while( token != NULL ) 
+        {
+        socData[i] = atoi(token);
+        token = strtok(NULL, ",");
+   
+        }
+        
+    }
+}		       
+		       
+int findMaxValue(int * input,int noOfElements)
 {   float maxValue = input[0];
 
 	for (int i =1; i < noOfElements;i++)
@@ -26,7 +60,7 @@ float findMaxValue(float * input,int noOfElements)
 	return maxValue;
 }
 
-float findMinValue(float * input,int noOfElements)
+int findMinValue(int * input,int noOfElements)
 {   float minValue = input[0];
 
 	for (int i =1; i < noOfElements;i++)
@@ -37,7 +71,7 @@ float findMinValue(float * input,int noOfElements)
 return minValue;
 }
 
-float aveOfLastConsecutiveValues(float * input,int noOfElements)
+int aveOfLastConsecutiveValues(int * input,int noOfElements)
 {
 int	startIndex = noOfElements - NO_OF_CONSECUTIVE_AVERAGE ;
 	float total = 0;
@@ -51,29 +85,33 @@ int	startIndex = noOfElements - NO_OF_CONSECUTIVE_AVERAGE ;
 	return (total/NO_OF_CONSECUTIVE_AVERAGE);
 }
 
-void printOnConsole(float* Max ,float* Min, float* Ave)
+void printOnConsole(int* Max ,int* Min, int* Ave)
 {
-	for(int i = 0; i<3; i++)
+	for(int i = 0; i<2; i++)
     {
-		 printf("%f,%f,%f\n", Max[i], Min[i], Ave[i]);
-	}
+		 printf("Max: %d,Min: %d,Average: %d\n", Max[i], Min[i], Ave[i]);
+    }
 }
-void receiverMainFunction(void (*fpPrintOnConsole)(float* ,float*, float*))
+void receiverMainFunction(void (*fpPrintOnConsole)(int* ,int*, int*))
 {
-    
-    	float Max[3], Min[3] ,Ave[3];
+        char consoleData[NOOFDATA][20];
+	int tempData[NOOFDATA],idData[NOOFDATA],socData[NOOFDATA];
+    	int Max[3], Min[3] ,Ave[3];
 
-	Status_t status = GetFromConsole();
-
-	 Max[0] = findMaxValue( Temp,9);
-     Min[0] = findMinValue( Temp,9);
-     Ave[0] = aveOfLastConsecutiveValues(Temp,9);
-	 Max[1] = findMaxValue( SOC,9);
-     Min[1] = findMinValue( SOC,9);
-     Ave[1] = aveOfLastConsecutiveValues(SOC,9);	
-	 Max[2] = findMaxValue( sensorsID,9);
-     Min[2] = findMinValue( sensorsID,9);
-     Ave[2] = aveOfLastConsecutiveValues(sensorsID,9);
+	GetFromConsole(consoleData);
+        collectIdData(consoleData,idData,NOOFDATA);
+        collectTempData(consoleData,tempData,NOOFDATA);
+        collectSocData(consoleData,socData,NOOFDATA);
+	
+	     Max[0] = findMaxValue( tempData,NOOFDATA);
+	     Min[0] = findMinValue( tempData,NOOFDATA);
+	     Ave[0] = aveOfLastConsecutiveValues(tempData,NOOFDATA);
+	     Max[1] = findMaxValue( socData,NOOFDATA);
+	     Min[1] = findMinValue( socData,NOOFDATA);
+	     Ave[1] = aveOfLastConsecutiveValues(socData,NOOFDATA);	
+	     Max[2] = findMaxValue( idData,NOOFDATA);
+	     Min[2] = findMinValue( idData,NOOFDATA);
+	     Ave[2] = aveOfLastConsecutiveValues(idData,NOOFDATA);
       
-	 fpPrintOnConsole(Max,Min,Ave);
+	fpPrintOnConsole(Max,Min,Ave);
 }
